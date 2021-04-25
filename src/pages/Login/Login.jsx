@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import SignIn from '../SignIn/SignIn';
 import './Login.css';
 const Login = () => {
   const [signIn, setSignIn] = useState(false);
@@ -16,29 +17,29 @@ const Login = () => {
         <div className="login_gradient" />
       </div>
       <div className="login__body">
-        (signIn ? (
-        <SignIn />
-        ): (
-        <>
-          <h1>Unlimited films, TV programmes and more.</h1>
-          <h2>Watch anywhere, Cancel at any time.</h2>
-          <p>
-            Ready to watch? Enter your email to create or restart your
-            membership
-          </p>
-          <div className="login__input">
-            <form>
-              <input type="email" placeholder="Email Address" />
-              <button
-                onClick={() => setSignIn(true)}
-                className="login__getStarted"
-              >
-                GET STARTED
-              </button>
-            </form>
-          </div>
-        </>
-        ))
+        {signIn ? (
+          <SignIn />
+        ) : (
+          <>
+            <h1>Unlimited films, TV programmes and more.</h1>
+            <h2>Watch anywhere, Cancel at any time.</h2>
+            <p>
+              Ready to watch? Enter your email to create or restart your
+              membership
+            </p>
+            <div className="login__input">
+              <form>
+                <input type="email" placeholder="Email Address" />
+                <button
+                  onClick={() => setSignIn(true)}
+                  className="login__getStarted"
+                >
+                  GET STARTED
+                </button>
+              </form>
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
