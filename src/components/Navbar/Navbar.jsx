@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import './Navbar.css';
 const Navbar = () => {
-  const [show, handleShow] = useState(false);
+  const [show, handleShow] = useState(true);
 
   const transitionNavbar = () => {
-    if (window.scroll > 100) {
+    if (window.scrollY > 100) {
       handleShow(true);
     } else {
       handleShow(false);
@@ -18,6 +18,7 @@ const Navbar = () => {
       window.removeEventListener('scroll', transitionNavbar);
     };
   }, []);
+
   return (
     <div className={`navbar ${show && 'navbar_black'}`}>
       <div className="navbar_content">
