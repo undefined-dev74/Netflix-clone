@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-
+import HomeScreen from '../src/containers/HomeScreen/HomeScreen';
 function App() {
   return (
     <div className="app">
