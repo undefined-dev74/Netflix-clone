@@ -1,20 +1,40 @@
-import React from 'react';
+import React, { useRef } from 'react';
+import { auth } from '../../firebase.config';
 import './SignIn.css';
 
 const SignIn = () => {
+  const emailRef = useRef(null);
+  const passwordRef = useRef(null);
+
   const register = e => {
     e.preventDefault();
+
+    auth
+      .createUserWithEmailAndPassword(
+        emailRef.current.value,
+        passwordRef.current.value
+      )
+      .then(authUser => console.log(authUser))
+      .catch(error => alert(error.message));
   };
 
   const signIn = e => {
     e.preventDefault();
+
+    auth
+      .signInWithEmailAndPassword(
+        emailRef.current.value,
+        passwordRef.current.value
+      )
+      .then(authUser => console.log(authUser))
+      .catch(error => alert(error.message));
   };
   return (
     <div className="signIn">
       <form>
         <h1>Sign In</h1>
-        <input type="Email" placeholder="Email" />
-        <input placeholder="Password" type="Password" />
+        <input ref={emailRef} type="Email" placeholder="Email" />
+        <input ref={passwordRef} placeholder="Password" type="Password" />
         <button type="submit" onClick={signIn}>
           Sign In
         </button>
