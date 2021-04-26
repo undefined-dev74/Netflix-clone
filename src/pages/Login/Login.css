@@ -81,7 +81,7 @@
   cursor: pointer;
 }
 
-input[type='email'] {
+.login__input > form > input[type='email'] {
   padding: 5px;
   outline-width: 0;
   height: 24px;
