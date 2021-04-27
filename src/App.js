@@ -6,6 +6,7 @@ import Login from './pages/Login/Login';
 import { auth } from './firebase.config';
 import { login, logout, selectUser } from './features/userSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import Profile from './pages/Profile/Profile';
 
 function App() {
   const dispatch = useDispatch();
@@ -13,6 +14,7 @@ function App() {
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(userAuth => {
+      <HomeScreen />;
       if (userAuth) {
         // ! Logged In
         dispatch(
@@ -26,7 +28,7 @@ function App() {
       }
     });
     return unsubscribe;
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className="app">

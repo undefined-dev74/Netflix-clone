@@ -27,6 +27,7 @@
   cursor: pointer;
   border-radius: 4px;
   border: none;
+  margin-right: 20px;
 }
 
 .login_gradient {
@@ -92,4 +93,13 @@
 
 .login__input {
   margin: 20px;
+}
+
+.login_avatar {
+  position: fixed;
+  top: 22px;
+  right: 20px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
 }

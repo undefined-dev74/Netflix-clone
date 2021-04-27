@@ -7,8 +7,8 @@ const SignIn = () => {
   const passwordRef = useRef(null);
 
   const register = e => {
-    e.preventDefault();
-
+    e.preventDefault(); //? To prevent default refresh
+    //! Registerting the New user with Email and password
     auth
       .createUserWithEmailAndPassword(
         emailRef.current.value,
@@ -19,8 +19,9 @@ const SignIn = () => {
   };
 
   const signIn = e => {
-    e.preventDefault();
+    e.preventDefault(); //? This will prevent default refresh
 
+    //! SignIn the user with existing email and password
     auth
       .signInWithEmailAndPassword(
         emailRef.current.value,
@@ -29,6 +30,7 @@ const SignIn = () => {
       .then(authUser => console.log(authUser))
       .catch(error => alert(error.message));
   };
+
   return (
     <div className="signIn">
       <form>

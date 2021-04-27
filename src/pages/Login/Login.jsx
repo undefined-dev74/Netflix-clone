@@ -3,6 +3,7 @@ import SignIn from '../SignIn/SignIn';
 import './Login.css';
 const Login = () => {
   const [signIn, setSignIn] = useState(false);
+
   return (
     <div className="login">
       <div className="login_background">
@@ -14,6 +15,11 @@ const Login = () => {
         <button onClick={() => setSignIn(true)} className="login_button">
           Sign In
         </button>
+        <img
+          className="login_avatar"
+          src="https://pbs.twimg.com/profile_images/1240119990411550720/hBEe3tdn_400x400.png"
+          alt=""
+        />
         <div className="login_gradient" />
       </div>
       <div className="login__body">
