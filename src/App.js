@@ -38,6 +38,9 @@ function App() {
             <Route exact path="/">
               <HomeScreen />
             </Route>
+            <Route path="/profile">
+              <Profile />
+            </Route>
           </Switch>
         )}
       </Router>
