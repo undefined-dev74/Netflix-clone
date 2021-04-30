@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, UseRef } from 'react';
 import './App.css';
 import HomeScreen from '../src/containers/HomeScreen/HomeScreen';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
