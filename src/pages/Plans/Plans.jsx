@@ -4,9 +4,11 @@ import { selectUser } from '../../features/userSlice';
 import db from '../../firebase.config';
 import { loadStripe } from '@stripe/stripe-js';
 import './Plans.css';
+
 const Plans = () => {
   const [products, setProducts] = useState([]);
   const user = useSelector(selectUser);
+
   // ? Using UseEffect Hooks to fetch the Product (Plans) details from Firabase cloudfare
 
   useEffect(() => {
@@ -14,6 +16,8 @@ const Plans = () => {
       .where('active', '==', true)
       .get()
       .then(querySnapShot => {
+        const products = {};
+
         querySnapShot.forEach(async productDoc => {
           products[productDoc.id] = productDoc.data();
 
@@ -27,7 +31,7 @@ const Plans = () => {
         });
         setProducts(products);
       });
-  }, [products]);
+  }, []);
 
   const loadCheckout = async priceId => {
     const docRef = await db
@@ -39,6 +43,7 @@ const Plans = () => {
         success_url: window.location.origin,
         cancel_url: window.location.origin,
       });
+
     docRef.onSnapshot(async snap => {
       const { error, sessionId } = snap.data();
 
@@ -64,8 +69,10 @@ const Plans = () => {
   return (
     <div className="plans">
       {Object.entries(products).map(([productId, productData]) => {
+        // TODO Add Some logic to check weather user has subscription or not...
+        console.log(productData.prices.priceId);
         return (
-          <div className="plans__plan">
+          <div className="plans__plan" key={productId}>
             <div className="plans__info">
               <h5>{productData.name}</h5>
               <h6>{productData.description}</h6>
